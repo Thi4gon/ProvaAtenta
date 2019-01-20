@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	  
+	  
+	  
+<head>
+
+<!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta charset="UTF-8">
+<title>Sapateira!</title>
+</head>
+<body>
+
+<h3 style="text-align:center"><span th:text="${sapato.nomeSapato}" ></span></h1>
+
+
+
+<div th:each="sapato: ${sapato}" class="container">
+	<div class="row"></div>
+		<p> Nome: <span th:text="${sapato.nomeSapato}"></span></p>
+			<p>Cor: <span th:text="${sapato.corSapato}"></span></p>
+	<p>Marca: <span th:text="${sapato.marcaSapato}"></span></p>
+	<p>Estilo: <span th:text="${sapato.estiloSapato}"></span></p>
+	<p>Data da Compra: <span th:text="${sapato.dataCompra}"></span></p>
+	<p>Valor do Sapato: R$<span th:text="${sapato.valorSapato}"></span></p>
+	<p>Loja da Compra: <span th:text="${sapato.nomeLoja}"></span></p>
+	
+	<br>
+	
+	
+
+	<form method="POST">
+<p>Ultima vez utilizado: <input type="date" value="" name="ultimaUlt" required/> </p>
+<p>Comentario sobre utilização: <input type="text" value="" name="comentarioUU" placeholder="Comentarios" required/> </p>
+
+<button type="submit" class="blue darken-4 waves-effect waves-purple darken-4 btn"> Salvar</button>
+<a href="/sapatos" class="blue darken-4 waves-effect waves-purple darken-4 btn">Voltar </a>
+</form>
+
+
+	  <div class="container"> 
+		<div class="alert alert-sucess alert-dismissible" role="alert" th:if="${not #strings.isEmpty(mensagem)}">
+	<span th:text="${mensagem}"></span>
+	</div>
+	</div>
+</div>
+
+
+
+
+<h4 style="text-align:center"> UTILIZAÇÕES </h4>
+<div class="container" th:each="comentario : ${comentarios}">
+
+<div class="row">
+	<div class="input-field col s2">
+  <p><span th:text="${comentario.ultimaUlt}"> </span> </p>
+  </div>
+  <div class="input-field col s8">
+<p><span th:text="${comentario.comentarioUU}"> </span> </p>
+</div>
+ <div class="input-field col s2">
+<td><a th:href="${(#mvc.url('SC#deletaComent').arg(0, comentario.ultimaUlt)).build()}">excluir</a></td>
+</div>
+</div>
+</div>
+
+
+
+
+<!--JavaScript at end of body for optimized loading-->
+      <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+</body>
+</html>
