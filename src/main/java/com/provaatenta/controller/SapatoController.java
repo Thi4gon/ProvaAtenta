@@ -64,7 +64,7 @@ public class SapatoController {
 		ModelAndView modelo = new ModelAndView("sapatos/detalheSapato");
 		modelo.addObject("sapato",sapato);
 		
-		Iterable<Comentario> comentarios = repositorioCom.findBySapato(sapato); // PEGAR O COMENTARIO E A ULTIMA DATA DE UTILIZAÇÃO por sapato
+		Iterable<Comentario> comentarios = repositorioCom.findBySapato(sapato); // pegar o coment e a ultima data de utiluzação por sapato
 		modelo.addObject("comentarios",comentarios);
 		
 		return modelo;
@@ -100,7 +100,7 @@ public class SapatoController {
 		
 		Sapato sapato= comentario.getSapato();
 		long codigoLong = sapato.getId();
-		String id = "" + codigoLong;    // CRIO A STRING PORCAUSA DO RETURN
+		String id = "" + codigoLong;    
 		
 		return "redirect:/"+id;
 	}
@@ -110,7 +110,7 @@ public class SapatoController {
 	@RequestMapping("/sapatosPorMarca")
 	public ModelAndView filtroMarca(String marcaSapato) {
 		ModelAndView modelo = new ModelAndView("index");
-		Iterable<Sapato> sapatos = repositorioS.findBymarcaSapato(marcaSapato); // buscar todos sapatos por marca
+		Iterable<Sapato> sapatos = repositorioS.findBymarcaSapato(marcaSapato); 
 		modelo.addObject("sapatos", sapatos);
 		
 		return modelo;
@@ -121,7 +121,7 @@ public class SapatoController {
 	@RequestMapping("/sapatosPorEstilo")
 	public ModelAndView filtroEstilo(String estiloSapato) {
 		ModelAndView modelo = new ModelAndView("index");
-		Iterable<Sapato> sapatos = repositorioS.findByestiloSapato(estiloSapato); // buscar todos sapatos por marca
+		Iterable<Sapato> sapatos = repositorioS.findByestiloSapato(estiloSapato); 
 		modelo.addObject("sapatos", sapatos);
 			
 		return modelo;
@@ -132,7 +132,7 @@ public class SapatoController {
 		@RequestMapping("/sapatosPorCor")
 		public ModelAndView filtroCor(String corSapato) {
 			ModelAndView modelo = new ModelAndView("index");
-			Iterable<Sapato> sapatos = repositorioS.findBycorSapato(corSapato); // buscar todos sapatos por marca
+			Iterable<Sapato> sapatos = repositorioS.findBycorSapato(corSapato); 
 			modelo.addObject("sapatos", sapatos);
 			
 			return modelo;
